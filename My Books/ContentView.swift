@@ -6,15 +6,22 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
+  // MARK: - PROPERTIES
+  let db = Firestore.firestore()
+  
+  // MARK: - BODY
+  var body: some View {
+    VStack {
       
-            Text("Bismillah")
-        }
-        .padding()
+      Text("Bismillah")
     }
+    .onAppear() {
+      db.collection("Test").addDocument (data: ["name": "Jonas"])
+    }
+  }
 }
 
 #Preview {
